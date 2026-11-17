@@ -1,0 +1,28 @@
+name: Godot Android Export
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import Godot project
+        run: godot --headless --editor --path . --quit
+      - name: Export Android APK
+        run: |
+          mkdir -p build
+          godot --headless --path . --export-debug "Android" build/Chakalia-Racing.apk
+      - name: Check APK exists and is non-empty
+        run: |
+          test -s build/Chakalia-Racing.apk
+          ls -lh build/Chakalia-Racing.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Chakalia-Racing-APK
+          path: build/Chakalia-Racing.apk
