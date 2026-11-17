@@ -1,40 +1,21 @@
-# Chakalia Racing
+# Chakalia Racing — Chakalia Systems
 
-**Developer: Chakalia Systems**
+An Android OpenGL ES 2.0 arcade-driving prototype with career and endless modes, traffic, collectible coins, accelerometer steering, touch steering, throttle, brake, nitro, pause and a low-poly 3D city/vehicle scene.
 
-A native Android low-poly 3D arcade racing prototype built with Java and OpenGL ES 2.0.
+## Build a real APK with GitHub Actions
 
-## Features
-- 3D road, lane markers, player car, traffic vehicles, roadside scenery and collectible coins.
-- Career mode with score-based level progression.
-- Endless mode focused on surviving and collecting coins.
-- Touch steering, accelerator, brake and nitro controls.
-- Optional accelerometer tilt steering.
-- Pause, return to menu, score and coin counter.
-- Custom launcher icon.
-- GitHub Actions workflow builds a debug APK.
+1. Create a GitHub repository named `ChakaliaRacing`.
+2. Upload the **contents** of this folder (including the hidden `.github` folder) to the repository root.
+3. Open **Actions** and run **Build and verify Chakalia Racing APK** (or push to `main`).
+4. Wait for the green workflow result. The workflow checks that the APK exists, is larger than 500 KB, verifies its Android signing certificate, and checks the package/app label.
+5. Open the completed run and download the `Chakalia-Racing-Verified-APK` artifact. Extract it and install `app-debug.apk` on an Android device.
 
-## Build an APK with GitHub
-1. Create a repository named `ChakaliaRacing`.
-2. Extract this ZIP and upload the **contents** of the `ChakaliaRacing` folder to the repository root (not the ZIP itself).
-3. Commit to the `main` branch.
-4. Open **Actions** and select **Build Chakalia Racing APK**.
-5. Wait for the green success check.
-6. Open the successful run, scroll to **Artifacts**, and download `Chakalia-Racing-APK`.
-7. Extract the artifact ZIP and install `app-debug.apk` on your Android phone. Allow installs from your file manager if Android asks.
+## Important verification note
 
-## Controls
-- Hold ◀ / ▶ to steer.
-- Hold GAS to accelerate; BRAKE to slow down.
-- Hold NITRO for a speed boost.
-- Tap TILT OFF to enable accelerometer steering; tilt your phone left/right in landscape.
-- Tap Ⅱ to pause/resume; MENU returns to mode selection.
+The GitHub workflow performs an actual Android Gradle build and APK/signature/package checks. This source package has not been run on a physical Android phone in this workspace. A successful workflow verifies packaging and signing, not every gameplay interaction or device-specific performance. Test steering, pause/resume, collision handling and screen scaling on your phone before public release.
 
-## Technical details
-- App name: Chakalia Racing
-- Package: `com.chakalia.racing`
-- Minimum Android: 6.0 (API 23)
-- Android Gradle Plugin 8.6.1, Gradle 8.7, JDK 17
-- OpenGL ES 2.0; no third-party game engine or runtime libraries.
+## Game scope
 
-This is a playable low-poly arcade prototype, not a photorealistic commercial racing simulator. Career mode currently uses score-based level progression.
+This is a lightweight, original low-poly arcade driving game, not a clone of Dr. Driving and not a photorealistic simulator. Cars, road, buildings and street furniture are drawn procedurally with OpenGL ES. It does not bundle commercial game assets.
+
+Developer: **Chakalia Systems**
